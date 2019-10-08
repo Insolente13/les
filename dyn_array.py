@@ -56,17 +56,16 @@ class DynArray:
             for elements in range(self.count-1):
                 self.array[elements] = new_array[elements]
             self.count -= 1
-            if (self.capacity - self.count) % 16 == 0:
-                self.capacity = self.capacity // 2
         elif self.count == i and self.count != 0:
             new_array = self.array[:i]
             for elements in range(self.count-1):
                 self.array[elements] = new_array[elements]
             self.count -= 1
-            if (self.capacity - self.count) % 16 == 0 and self.count != 0:
-                self.capacity = self.capacity // 2
         else:
             raise IndexError('Index is out of bounds')
+
+        if self.capacity / self.count == 2:
+            self.resize(int(0.5 * self.capacity))
 
 
 '''4.4. Напишите тесты, проверяющие работу методов insert() и delete():'''
