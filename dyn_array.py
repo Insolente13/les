@@ -64,7 +64,7 @@ class DynArray:
         else:
             raise IndexError('Index is out of bounds')
 
-        if self.capacity / self.count == 2:
+        if self.count != 0 and self.capacity / self.count == 2:
             self.resize(int(0.5 * self.capacity))
 
 
