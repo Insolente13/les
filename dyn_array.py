@@ -51,23 +51,23 @@ class DynArray:
     Важно, единственное исключение: для метода insert() параметр i может принимать значение, 
     равное длине рабочего массива count, в таком случае добавление происходит в его хвост.'''
     def delete(self, i):
-        if self.count > i+1 and self.count != 0:
+        if self.count > i and self.count != 0:
             new_array = self.array[:i] + self.array[i+1:self.count]
             for elements in range(self.count-1):
                 self.array[elements] = new_array[elements]
             self.count -= 1
-        elif self.count == i+1 and self.count != 0:
+            if self.count != 0 and self.capacity / self.count == 2 and self.capacity >= 32:
+                self.capacity = self.capacity // 2
+        elif self.count == i and self.count != 0:
             new_array = self.array[:i]
             for elements in range(self.count-1):
                 self.array[elements] = new_array[elements]
             self.count -= 1
+            if self.count != 0 and self.capacity / self.count == 2 and self.capacity >= 32:
+                self.capacity = self.capacity // 2
         else:
+            print(i)
             raise IndexError('Index is out of bounds')
-
-        if self.count != 0 and self.capacity / self.count == 2:
-            self.resize(int(0.5 * self.capacity))
-        elif self.count == 0:
-            self.array = self.make_array(self.capacity)
 
 
 '''4.4. Напишите тесты, проверяющие работу методов insert() и delete():'''
