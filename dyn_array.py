@@ -58,6 +58,7 @@ class DynArray:
             self.count -= 1
             if self.count != 0 and self.capacity / self.count == 2 and self.capacity >= 32:
                 self.capacity = self.capacity // 2
+                self.resize(self.capacity)
         elif self.count == i and self.count != 0:
             new_array = self.array[:i]
             for elements in range(self.count-1):
@@ -65,6 +66,7 @@ class DynArray:
             self.count -= 1
             if self.count != 0 and self.capacity / self.count == 2 and self.capacity >= 32:
                 self.capacity = self.capacity // 2
+                self.resize(self.capacity)
         else:
             print(i)
             raise IndexError('Index is out of bounds')
