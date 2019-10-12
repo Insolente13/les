@@ -52,7 +52,7 @@ class DynArray:
     равное длине рабочего массива count, в таком случае добавление происходит в его хвост.'''
     def delete(self, i):
         if i == 0 and self.count > 0:
-            new_array = self.array[i + 1:self.count]
+            new_array = self.array[1:self.count]
         elif self.count > i and self.count > 0:
             new_array = self.array[:i] + self.array[i + 1:self.count]
         elif self.count == i and self.count > 0:
@@ -65,8 +65,8 @@ class DynArray:
         self.array = self.array[0:self.count-1]
         self.count -= 1
 
-        if self.count != 0 and self.capacity / self.count == 2 and self.capacity >= 32:
-            self.capacity = self.capacity // 2
+        if self.count != 0 and self.capacity // self.count == 2 and self.capacity >= 32:
+            self.capacity = self.capacity // 3 * 2
             self.resize(self.capacity)
 
 
