@@ -60,13 +60,14 @@ class DynArray:
         else:
             raise IndexError('Index is out of bounds')
 
+        self.array = self.make_array(self.capacity)
         for elements in range(self.count - 1):
             self.array[elements] = new_array[elements]
-        self.array = self.array[0:self.count-1]
+
         self.count -= 1
 
         if self.count != 0 and self.capacity // self.count == 2 and self.capacity >= 32:
-            self.capacity = self.capacity // 3 * 2
+            self.capacity = self.capacity // 2
             self.resize(self.capacity)
 
 
