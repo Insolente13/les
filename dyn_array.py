@@ -66,10 +66,10 @@ class DynArray:
 
         self.count -= 1
 
-        if self.count != 0 and self.capacity // self.count == 2 and self.capacity >= 32:
-            self.capacity = (self.capacity * 2) // 3 + 1
+        if self.count != 0 and self.count == int((self.capacity / 2) - 1) and int((self.capacity * 2) / 3) >= 16:
+            self.capacity = int((self.capacity * 2) / 3)
             self.resize(self.capacity)
-
+            print(self.count, self.capacity, self.array)
 
 '''4.4. Напишите тесты, проверяющие работу методов insert() и delete():'''
 from random import randint
