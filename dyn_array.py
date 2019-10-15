@@ -144,13 +144,29 @@ def test_delete_2():
     test_da = DynArray()
     for x in range(1047):
         test_da.append(x)
-    for y in range(1001):
-        test_da.delete(0)
+    
+    count_array = 0
+    try:
+        for x in test_da.array:
+            count_array += 1
+    except ValueError:
+        pass
 
-    if test_da.capacity == 79:
-        print('PASSED')
-    else:
-        print('FAIL')
+    if test_da.capacity == 2048 and count_array == 1047:
+        for y in range(1001):
+            test_da.delete(0)
+
+        count_new_array = 0
+        try:
+            for x in test_da.array:
+                count_new_array += 1
+        except ValueError:
+            pass
+
+        if test_da.capacity == 79 and count_new_array == 46:
+            print('PASSED')
+        else:
+            print('FAIL')
 
 
 '''-- попытка удаления элемента в недопустимой позиции.'''
