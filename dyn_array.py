@@ -151,13 +151,13 @@ def test_delete_2():
         test_da.append(x)
 
     count_array = test_da.count
-    len_array = len(test_da.array)
+    len_array = test_da.capacity
 
     if len_array == 2048 and count_array == 1047:
         for y in range(1001):
             test_da.delete(0)
 
-    len_new_array = len(test_da.array)
+    len_new_array = test_da.capacity
     count_new_array = test_da.count
 
     if len_new_array == 79 and count_new_array == 46:
