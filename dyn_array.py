@@ -99,23 +99,18 @@ def test_insert_1():
 буфера (проверьте также корректное изменение размера буфера);'''
 
 
-def test_insert_2():
-    count_try = 100
-    count = 0
-    for c_try in range(count_try):
-        test_da = DynArray()
-        random_range = 16 * (2 ** randint(1, 5))
-        for x in range(random_range):
-            test_da.append(x)
-        first_capacity = test_da.capacity
-        test_da.insert(random_range, randint(1, 5))
+def test_delete_2():
+    test_da = DynArray()
+    for x in range(1047):
+        test_da.append(x)
+    if test_da.capacity == 2048:
+        for y in range(1001):
+            test_da.delete(0)
 
-        if test_da.capacity / first_capacity == 2:
-            count += 1
-    if count != count_try:
-        print('FAIL')
-    else:
-        print('PASSED')
+        if test_da.capacity == 79:
+            print('PASSED')
+        else:
+            print('FAIL')
 
 
 '''-- попытка вставки элемента в недопустимую позицию;'''
