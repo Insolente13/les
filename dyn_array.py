@@ -102,7 +102,7 @@ def test_insert_1():
 def test_insert_2():
     count_try = 100
     count = 0
-    for c_try in range(count_try): 
+    for c_try in range(count_try):
         test_da = DynArray()
         random_range = 16 * (2 ** randint(1, 5))
         for x in range(random_range):
@@ -150,18 +150,20 @@ def test_delete_2():
     for x in range(1047):
         test_da.append(x)
 
-    count_array = len(test_da.array)
+    count_array = test_da.count
+    len_array = len(test_da.array)
 
-    if test_da.capacity == 2048 and count_array == 1047:
+    if len_array == 2048 and count_array == 1047:
         for y in range(1001):
             test_da.delete(0)
 
-        count_new_array = len(test_da.array)
+    len_new_array = len(test_da.array)
+    count_new_array = test_da.count
 
-        if test_da.capacity == 79 and count_new_array == 46:
-            print('PASSED')
-        else:
-            print('FAIL')
+    if len_new_array == 79 and count_new_array == 46:
+        print('PASSED')
+    else:
+        print('FAIL')
 
 
 '''-- попытка удаления элемента в недопустимой позиции.'''
