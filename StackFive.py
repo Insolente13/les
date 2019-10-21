@@ -24,27 +24,19 @@ class Stack:
 
 def five(brackets):
     brackets_stack = Stack()
-    break_point = 0
-    count_pops = 0
+    break_pop = None
 
     for x in brackets:
-        brackets_stack.push(x)
-    if brackets_stack.size() % 2 == 0 and brackets_stack.peek() != '(':
-        for brack in range(brackets_stack.size()):
-            brack_pop = brackets_stack.pop()
-            if count_pops < 0:
-                break_point += 1
+        if x == '(':
+            brackets_stack.push(x)
+        elif x == ')':
+            break_pop = brackets_stack.pop()
+            if break_pop is None:
                 break
-            else:
-                if brack_pop == '(':
-                    count_pops += 1
-                elif brack_pop == ')':
-                    count_pops -= 1
-    else:
-        break_point += 1
 
-    if break_point == 0 and count_pops == 0:
+    if brackets_stack.size() == 0 and break_pop is not None:
         print('Cбалансированы')
     else:
         print('Не сбалансированы')
+
 
