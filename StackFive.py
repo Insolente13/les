@@ -43,7 +43,7 @@ def five(brackets):
 def post_fix(expression):
     S1 = Stack()
     S2 = Stack()
-    for x in expression.replace(' ', ''):
+    for x in expression:
         S1.push(x)
 
     for y in range(S1.size()):
