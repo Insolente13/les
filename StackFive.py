@@ -64,6 +64,3 @@ def post_fix(expression):
             S2.push(S2.pop() % S2.pop())
 
     return S2.peek()
-
-print(post_fix('8 2 + 5 * 9 + ='))
-
