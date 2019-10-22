@@ -62,5 +62,5 @@ def post_fix(expression):
             S2.push(S2.pop() // S2.pop())
         elif pops1 == '%':
             S2.push(S2.pop() % S2.pop())
-
-    return S2.peek()
+        elif pops1 == '=':
+            return S2.peek()
