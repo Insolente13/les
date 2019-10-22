@@ -40,3 +40,30 @@ def five(brackets):
         print('Не сбалансированы')
 
 
+def post_fix(expression):
+    S1 = Stack()
+    S2 = Stack()
+    for x in expression.replace(' ', ''):
+        S1.push(x)
+
+    for y in range(S1.size()):
+        pops1 = S1.pop()
+        if pops1.isdigit():
+            S2.push(int(pops1))
+        elif pops1 == '+':
+            S2.push(S2.pop() + S2.pop())
+        elif pops1 == '-':
+            S2.push(S2.pop() - S2.pop())
+        elif pops1 == '*':
+            S2.push(S2.pop() * S2.pop())
+        elif pops1 == '/':
+            S2.push(S2.pop() / S2.pop())
+        elif pops1 == '//':
+            S2.push(S2.pop() // S2.pop())
+        elif pops1 == '%':
+            S2.push(S2.pop() % S2.pop())
+
+    return S2.peek()
+
+print(post_fix('8 2 + 5 * 9 + ='))
+
