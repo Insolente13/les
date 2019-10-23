@@ -21,33 +21,6 @@ class Stack:
             return None
 
 
-def post_fix(expression):
-    S1 = Stack()
-    S2 = Stack()
-    for x in expression:
-        S1.push(x)
-
-    for y in range(S1.size()):
-        pops1 = S1.pop()
-        if pops1.isdigit():
-            S2.push(int(pops1))
-        elif pops1 == '+':
-            S2.push(S2.pop() + S2.pop())
-        elif pops1 == '-':
-            S2.push(S2.pop() - S2.pop())
-        elif pops1 == '*':
-            S2.push(S2.pop() * S2.pop())
-        elif pops1 == '/':
-            S2.push(S2.pop() / S2.pop())
-        elif pops1 == '//':
-            S2.push(S2.pop() // S2.pop())
-        elif pops1 == '%':
-            S2.push(S2.pop() % S2.pop())
-        elif pops1 == '=':
-            return S2.peek()
-
-
-
 def five(brackets):
     brackets_stack = Stack()
 
