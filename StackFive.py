@@ -49,18 +49,18 @@ def post_fix(expression):
 
 def five(brackets):
     brackets_stack = Stack()
-    answer = None
 
     for x in range(len(brackets)):
         if brackets[x] == '(':
             brackets_stack.push(brackets[x])
-        elif brackets[x] == ')' and brackets_stack.pop() is None:
-            if brackets_stack.pop() is None:
-                answer = 'Не сбалансированы'
-                break
+        elif brackets[x] == ')':
+            if brackets_stack.size() == 0:
+                print('Не сбалансированы')
+                return
+            else:
+                brackets_stack.pop()
 
-    if brackets_stack.size() == 0 and answer is None:
-        answer = 'Cбалансированы'
-    elif brackets_stack.size() > 0:
-        answer = 'Не сбалансированы'
-    print(answer)
+    if brackets_stack.size() == 0:
+        print('Cбалансированы')
+    else:
+        print('Не сбалансированы')
