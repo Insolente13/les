@@ -21,25 +21,6 @@ class Stack:
             return None
 
 
-
-def five(brackets):
-    brackets_stack = Stack()
-    break_pop = None
-
-    for x in brackets:
-        if x == '(':
-            brackets_stack.push(x)
-        elif x == ')':
-            break_pop = brackets_stack.pop()
-            if break_pop is None:
-                break
-
-    if brackets_stack.size() == 0 and break_pop is not None:
-        print('Cбалансированы')
-    else:
-        print('Не сбалансированы')
-
-
 def post_fix(expression):
     S1 = Stack()
     S2 = Stack()
@@ -64,3 +45,22 @@ def post_fix(expression):
             S2.push(S2.pop() % S2.pop())
         elif pops1 == '=':
             return S2.peek()
+
+
+def five(brackets):
+    brackets_stack = Stack()
+    answer = None
+
+    for x in range(len(brackets)):
+        if brackets[x] == '(':
+            brackets_stack.push(brackets[x])
+        elif brackets[x] == ')' and brackets_stack.pop() is None:
+            if brackets_stack.pop() is None:
+                answer = 'Не сбалансированы'
+                break
+
+    if brackets_stack.size() == 0 and answer is None:
+        answer = 'Cбалансированы'
+    elif brackets_stack.size() > 0:
+        answer = 'Не сбалансированы'
+    print(answer)
