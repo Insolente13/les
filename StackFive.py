@@ -57,8 +57,7 @@ def five(brackets):
             if brackets_stack.size() == 0:
                 print('Не сбалансированы')
                 return
-            else:
-                brackets_stack.pop()
+            brackets_stack.pop()
 
     if brackets_stack.size() == 0:
         print('Cбалансированы')
