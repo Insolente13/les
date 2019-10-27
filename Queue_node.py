@@ -46,3 +46,5 @@ class QueueDoubleStack:
     def circle(self, count):
         for x in range(count):
             self.enqueue(self.dequeue())
+
+            
