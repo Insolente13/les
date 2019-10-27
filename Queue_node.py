@@ -36,12 +36,7 @@ class QueueDoubleStack:
             while self.stack_1.size() != 0:
                 self.stack_2.push(self.stack_1.pop())
 
-        del_element = self.stack_2.pop()
-
-        if del_element is None:
-            return None
-        else:
-            return del_element
+        return self.stack_2.pop()
         # выдача из головы
 
     def size(self):
