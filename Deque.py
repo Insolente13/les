@@ -28,18 +28,19 @@ class Deque:
     def size(self):
         return len(self.stack)  # размер очереди
 
-    '''7.2. Напишите функцию, которая с помощью deque проверяет, 
-    является ли некоторая строка палиндромом 
-    (читается одинаково слева направо и справа налево).'''
-    def palindrome(self, word):
-        self.stack = []
-        for w in word:
-            self.addFront(w)
-        for char in range(self.size()):
-            if self.removeFront() != self.removeTail():
-                print('Not palindrome!')
-                return
-        print('Palindrome')
+
+'''7.2. Напишите функцию, которая с помощью deque проверяет, 
+является ли некоторая строка палиндромом 
+(читается одинаково слева направо и справа налево).'''
+def palindrome(word):
+    pal_dq = Deque()
+    for w in word:
+        pal_dq.addFront(w)
+    for char in range(pal_dq.size()):
+        if pal_dq.removeFront() != pal_dq.removeTail():
+            print('Not palindrome!')
+            return
+    print('Palindrome')
 
 
 # Тесты
