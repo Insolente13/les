@@ -21,7 +21,7 @@ class Stack:
             return None
 
 
-class QueueDoubleStack:
+class Queue:
     def __init__(self):
         self.stack_1 = Stack()
         self.stack_2 = Stack()
